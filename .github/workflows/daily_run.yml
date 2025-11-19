@@ -2,6 +2,9 @@ name: Daily Weather Pipeline
 
 # 1. ตั้งเวลาทำงาน (Trigger)
 on:
+  # รันทุกครั้งที่มีการแก้ไขโค้ดใน branch main (เพิ่มตรงนี้)
+  push:
+    branches: [ "main" ]
   schedule:
     # รันทุกวันตอน 7:00 น. ประเทศไทย (คือ 00:00 UTC)
     - cron: '0 0 * * *'
