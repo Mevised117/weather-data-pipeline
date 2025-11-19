@@ -26,10 +26,16 @@ jobs:
         with:
           python-version: '3.9'
 
+#-------------------------------------------------------
       # 4. สร้างไฟล์ key.json ขึ้นมาใหม่ (โดยอ่านจากความลับที่ซ่อนไว้)
+      # - name: Create Service Account Key
+        # run: echo "${{ secrets.GCP_KEY_JSON }}" > key.json
+#---------------------------------------------------------
       - name: Create Service Account Key
-        run: echo "${{ secrets.GCP_KEY_JSON }}" > key.json
-
+              env:
+                GCP_KEY: ${{ secrets.GCP_KEY_JSON }}
+              run: echo "$GCP_KEY" > key.json
+              
       # 5. ลง Library ที่จำเป็น
       - name: Install dependencies
         run: |
